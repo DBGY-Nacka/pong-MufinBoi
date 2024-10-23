@@ -1,16 +1,24 @@
-from turtle import Turtle
+import turtle
+
+ball = turtle.Turtle
 
 
-class Ball(Turtle):
+class Ball(turtle):
     def __init__(self):
-        pass
+        super().__init__()
+        self.speed(40)
+        self.shape("circle")
+        self.color("white")
+        self.penup()
+        self.goto(0, 0)
+
+    def move(self):
+        new_x = self.xcor() + self.dx
+        new_y = self.ycor() + self.dy
+        self.goto(new_x, new_y)
 
 
-hit_ball = turtle.Turtle()
-hit_ball.speed(40)
-hit_ball.shape("circle")
-hit_ball.color("blue")
-hit_ball.penup()
-hit_ball.goto(0, 0)
-hit_ball.dx = 5
-hit_ball.dy = -5
+hit_ball = ball()
+
+while True:
+    hit_ball.move()
